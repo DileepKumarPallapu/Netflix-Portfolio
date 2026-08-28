@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+}
+
+[data-aos="drop-bounce"] {
+  opacity: 0;
+}
+[data-aos="drop-bounce"].aos-animate {
+  animation: dropBounce 1.2s cubic-bezier(0.28, 0.84, 0.42, 1) forwards;
+}
+
+@keyframes dropBounce {
+  0% { transform: translateY(-300px); opacity: 0; }
+  50% { transform: translateY(0); opacity: 1; }
+  65% { transform: translateY(-40px); opacity: 1; }
+  80% { transform: translateY(0); opacity: 1; }
+  90% { transform: translateY(-15px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive/mobile hardening */
+html, body, #root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  min-width: 320px;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg, video, canvas, iframe {
+  max-width: 100%;
+}
+
+button, a, input, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (pointer: coarse) {
+  .hero-cursor {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .fixed, .absolute {
+    max-width: 100vw;
+  }
+}
